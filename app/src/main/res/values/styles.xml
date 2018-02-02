@@ -8,14 +8,41 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Wrapper -->
+    <style name="Wrapper">
+        <item name="android:layout_margin">20px</item>
+        <item name="android:paddingTop">50px</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+    <!-- Each row in layout -->
     <style name="LayoutRows">
         <item name="android:layout_marginBottom">80px</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:orientation">horizontal</item>
     </style>
+    <!-- Add entry button -->
     <style name="SubmitButton">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+    </style>
+    <!-- Row's TextView  -->
+    <style name="SimpleLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:paddingRight">20px</item>
+    </style>
+    <!-- Row's EditText  -->
+    <style name="SimpleInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">textPersonName</item>
     </style>
 </resources>
