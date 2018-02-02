@@ -11,9 +11,7 @@ import android.widget.TextView;
 public class BikeShare extends Activity {
     // GUI variables
     private Button addRide;
-    private TextView lastAdded;
-    private TextView newWhat, newWhere;
-
+    private TextView lastAdded, newWhat, newWhere;
     private EditText whereInput, whatInput;
 
     private Ride last= new Ride("", "");
