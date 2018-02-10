@@ -10,46 +10,15 @@
 
     <LinearLayout
         style="@style/Wrapper">
-        <LinearLayout
-            style="@style/LayoutRows">
-            <TextView
-                android:id="@+id/last_added"
-                style="@style/SimpleLabel"
-                android:text="@string/last_added" />
-            <TextView
-                android:id="@+id/last_text"
-                style="@style/SimpleInput"
-                android:text=""/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/LayoutRows">
-            <TextView
-                android:id="@+id/what_text"
-                style="@style/SimpleLabel"
-                android:text="@string/what_text" />
-            <EditText
-                android:id="@+id/what_input"
-                style="@style/SimpleInput"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/LayoutRows">
-            <TextView
-                android:id="@+id/where_text"
-                style="@style/SimpleLabel"
-                android:text="@string/where_text" />
-            <EditText
-                android:id="@+id/where_input"
-                style="@style/SimpleInput"
-                android:text="" />
-        </LinearLayout>
 
         <Button
-            android:id="@+id/add_button"
+            android:id="@+id/start_ride"
             style="@style/SubmitButton"
-            android:text="@string/add_button" />
+            android:text="@string/start_ride" />
+        <Button
+            android:id="@+id/end_ride"
+            style="@style/SubmitButton"
+            android:text="@string/end_ride" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

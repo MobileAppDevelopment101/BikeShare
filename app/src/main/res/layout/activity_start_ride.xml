@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.coffeeio.bikeshare.BikeShare"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <LinearLayout
+        style="@style/Wrapper">
+        <LinearLayout
+            style="@style/LayoutRows">
+            <TextView
+                android:id="@+id/last_added"
+                style="@style/SimpleLabel"
+                android:text="@string/last_added" />
+            <TextView
+                android:id="@+id/last_text"
+                style="@style/SimpleInput"
+                android:text=""/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutRows">
+            <TextView
+                android:id="@+id/what_text"
+                style="@style/SimpleLabel"
+                android:text="@string/what_text" />
+            <EditText
+                android:id="@+id/what_input"
+                style="@style/SimpleInput"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutRows">
+            <TextView
+                android:id="@+id/where_text"
+                style="@style/SimpleLabel"
+                android:text="@string/where_text" />
+            <EditText
+                android:id="@+id/where_input"
+                style="@style/SimpleInput"
+                android:text="" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_button"
+            style="@style/SubmitButton"
+            android:text="@string/add_button" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

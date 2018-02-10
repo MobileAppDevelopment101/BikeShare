@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BikeShare.iml" filepath="$PROJECT_DIR$/BikeShare.iml" />
-      <module fileurl="file://C:\Users\mgapc\Documents\github\BikeShare\BikeShare.iml" filepath="C:\Users\mgapc\Documents\github\BikeShare\BikeShare.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\mgapc\Documents\github\BikeShare\app\app.iml" filepath="C:\Users\mgapc\Documents\github\BikeShare\app\app.iml" />
     </modules>
   </component>
 </project>
