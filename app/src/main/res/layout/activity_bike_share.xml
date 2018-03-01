@@ -19,6 +19,12 @@
             android:id="@+id/end_ride"
             style="@style/SubmitButton"
             android:text="@string/end_ride" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

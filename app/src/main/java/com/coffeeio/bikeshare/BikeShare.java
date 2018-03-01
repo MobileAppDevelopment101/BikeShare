@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +23,12 @@ public class BikeShare extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout. activity_bike_share);
+
+        RidesDB rides = new RidesDB(BikeShare.this);
+
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.list_element, rides.getRidesDB());
+
 
         startRide = (Button) findViewById(R.id.start_ride);
         endRide = (Button) findViewById(R.id.end_ride);
