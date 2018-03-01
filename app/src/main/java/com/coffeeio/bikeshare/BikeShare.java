@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.List;
 
 public class BikeShare extends Activity {
     private static final String TAG = "BikeShare";
@@ -18,16 +21,18 @@ public class BikeShare extends Activity {
     private Button startRide, endRide;
     private TextView lastAdded, newWhat, newWhere;
     private EditText whereInput, whatInput;
-
+    ArrayAdapter<Ride> itemsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout. activity_bike_share);
 
-        RidesDB rides = new RidesDB(BikeShare.this);
+        RidesDB ridesInstance = RidesDB.get(BikeShare.this);
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.list_element, rides.getRidesDB());
+        itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ridesInstance.getRidesDB());
+
+        ListView listView = (ListView) findViewById(R.id.item_list);
+        listView.setAdapter(itemsAdapter);
 
 
         startRide = (Button) findViewById(R.id.start_ride);
@@ -51,5 +56,12 @@ public class BikeShare extends Activity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        itemsAdapter.notifyDataSetChanged();
     }
 }

@@ -13,7 +13,7 @@ public class RidesDB {
     private static RidesDB sRidesDB;
 
     public static RidesDB get(Context context) {
-        if (sRidesDB == null) { sRidesDB= new RidesDB(context); }
+        if (sRidesDB == null) { sRidesDB = new RidesDB(context); }
         return sRidesDB;
     }
 
