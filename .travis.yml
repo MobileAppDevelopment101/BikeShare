@@ -28,4 +28,3 @@ before_install:
 script:
   - ./gradlew build -x lint
 
-  
