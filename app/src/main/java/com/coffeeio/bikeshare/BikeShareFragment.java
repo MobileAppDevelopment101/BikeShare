@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +15,21 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
 /**
  * Created by MGApcDev on 03-03-2018.
  */
 
 public class BikeShareFragment extends Fragment {
+    private static final String TAG = "BikeShare";
+
+
     // GUI variables
     private Button startRide, endRide;
     private TextView lastAdded, newWhat, newWhere;
     private EditText whereInput, whatInput;
     ArrayAdapter<Ride> itemsAdapter;
+    RidesDB ridesInstance;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,16 +41,16 @@ public class BikeShareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_bikeshare, container, false);
 
-        RidesDB ridesInstance = RidesDB.get(BikeShareFragment.this.getActivity());
+        ridesInstance = RidesDB.get(BikeShareFragment.this.getActivity());
 
         itemsAdapter = new ArrayAdapter<Ride>(BikeShareFragment.this.getActivity(), android.R.layout.simple_list_item_1, ridesInstance.getRidesDB());
 
-        ListView listView = (ListView) v.findViewById(R.id.item_list);
+        ListView listView = v.findViewById(R.id.item_list);
         listView.setAdapter(itemsAdapter);
 
 
-        startRide = (Button) v.findViewById(R.id.start_ride);
-        endRide = (Button) v.findViewById(R.id.end_ride);
+        startRide = v.findViewById(R.id.start_ride);
+        endRide = v.findViewById(R.id.end_ride);
 
         // Start StartRide activity
         startRide.setOnClickListener(new View.OnClickListener() {
@@ -65,5 +71,18 @@ public class BikeShareFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Log.d(TAG, "onResume: clearing list");
+        for (Ride ride: ridesInstance.getRidesDB()) {
+            Log.d(TAG, ride.toString());
+        }
+        // Empty list and refill.
+        itemsAdapter.clear();
+        itemsAdapter.addAll(ridesInstance.getRidesDB());
     }
 }
