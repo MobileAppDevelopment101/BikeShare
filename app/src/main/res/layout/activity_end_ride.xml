@@ -19,6 +19,8 @@
             <TextView
                 android:id="@+id/last_text"
                 style="@style/SimpleInput"
+                android:inputType="textMultiLine"
+                android:lines="2"
                 android:text=""/>
         </LinearLayout>
 

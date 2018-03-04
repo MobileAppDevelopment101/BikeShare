@@ -7,18 +7,10 @@
     tools:context="com.coffeeio.bikeshare.BikeShare"
     tools:layout_editor_absoluteY="81dp">
 
-
-    <LinearLayout
-        style="@style/Wrapper">
-
-        <Button
-            android:id="@+id/start_ride"
-            style="@style/SubmitButton"
-            android:text="@string/start_ride" />
-        <Button
-            android:id="@+id/end_ride"
-            style="@style/SubmitButton"
-            android:text="@string/end_ride" />
-    </LinearLayout>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>

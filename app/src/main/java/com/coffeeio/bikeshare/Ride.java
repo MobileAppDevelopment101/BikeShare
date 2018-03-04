@@ -5,19 +5,47 @@ package com.coffeeio.bikeshare;
  */
 
 public class Ride {
-    private String mbikeName;
-    private String mstartRide;
+    private String mBikeName, mStartRide, mEndRide = null;
     public Ride(String name, String start) {
-        mbikeName= name;
-        mstartRide= start;
+        mBikeName = name;
+        mStartRide = start;
     }
-    public String getMbikeName() {return mbikeName; }
-    public void setMbikeName(String mbikeName) {
-        this.mbikeName = mbikeName;
+
+    public Ride(String name, String start, String end) {
+        mBikeName = name;
+        mStartRide = start;
+        mEndRide = end;
     }
-    public String getMstartRide() { return mstartRide; }
-    public void setMstartRide(String mstartRide) {
-        this.mstartRide = mstartRide;
+
+    public String getmBikeName() {
+        return mBikeName;
     }
-    public String toString() { return mbikeName+" started here: " + mstartRide ; }
+
+    public void setmBikeName(String mBikeName) {
+        this.mBikeName = mBikeName;
+    }
+
+    public String getmStartRide() {
+        return mStartRide;
+    }
+
+    public void setmStartRide(String mStartRide) {
+        this.mStartRide = mStartRide;
+    }
+
+    public String getmEndRide() {
+        return mEndRide;
+    }
+
+    public void setmEndRide(String mEndRide) {
+        this.mEndRide = mEndRide;
+    }
+
+    public String toString() {
+        if (mEndRide != null) {
+            return mBikeName + " started here: " + mStartRide + ", ended here: " + mEndRide;
+        }
+
+        return mBikeName + " started here: " + mStartRide;
+    }
 }
