@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +16,10 @@ import java.util.List;
 public class RidesDB {
     private static RidesDB sRidesDB;
 
+    public static RidesDB get() {
+        if (sRidesDB == null) { sRidesDB = new RidesDB(); }
+        return sRidesDB;
+    }
     public static RidesDB get(Context context) {
         if (sRidesDB == null) { sRidesDB = new RidesDB(context); }
         return sRidesDB;
@@ -23,11 +28,10 @@ public class RidesDB {
     private ArrayList<Ride> ridesFinished;
     private HashMap<String, Ride> ridesInProgress;
 
-    private Ride mlastRide= new Ride("", "");
-
     public List<Ride> getRidesDB() {
         List<Ride> r1 = getFinishedRides();
         List<Ride> r2 = getUnfinisedRides();
+        Collections.reverse(r1); // Newly finished rides first
         r2.addAll(r1); // Append finished onto unfinished, so unfinished is displayed first.
         return r2;
     }
@@ -42,11 +46,16 @@ public class RidesDB {
         return listOfValues;
     }
 
-    public void addRide(String what, String where) {
+    public Ride addRide(String what, String where) {
+        if (ridesInProgress.containsKey(what)) {
+            return null;
+        }
         ridesInProgress.put(what, new Ride(what, where));
+
+        return new Ride(what, where);
     }
-    public void addRide(Ride ride) {
-        ridesInProgress.put(ride.getmBikeName(), new Ride(ride.getmBikeName(), ride.getmStartRide()));
+    public Ride addRide(Ride ride) {
+       return addRide(ride.getmBikeName(), ride.getmStartRide());
     }
 
     public Ride endRide(String what, String where) {
@@ -62,12 +71,14 @@ public class RidesDB {
     }
 
     private RidesDB(Context context) {
+        clearRides();
+    }
+    private RidesDB() {
+        clearRides();
+    }
+
+    public void clearRides() {
         ridesInProgress = new HashMap<>();
         ridesFinished = new ArrayList<>();
-
-        // Add some rides for testing purposes
-        ridesFinished.add(new Ride("Peters bike", "ITU", "Fields"));
-        ridesInProgress.put("Peters bike" ,new Ride("Peters bike", "Fields"));
-        ridesFinished.add(new Ride("Jørgens bike", "Home", "ITU"));
     }
 }

@@ -46,6 +46,7 @@ public class Ride {
         if (mEndRide != null) {
             return mBikeName + " started here: " + mStartRide + ", ended here: " + mEndRide;
         }
+
         return mBikeName + " started here: " + mStartRide;
     }
 }

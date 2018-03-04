@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StartRide extends AppCompatActivity {
     private static final String TAG = "BikeShare";
 
-    private Ride last = new Ride("", "");
     private RidesDB ridesInstance;
 
     // GUI variables
@@ -35,29 +35,32 @@ public class StartRide extends AppCompatActivity {
         whatInput = findViewById(R.id.what_input);
         whereInput = findViewById(R.id.where_input);
 
-        updateUI();
-
         // Add ride, based on text inputs.
         addRide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if ((whatInput.getText().length() > 0) && (whereInput.getText().length() > 0)){
-                    last.setmBikeName(whatInput.getText().toString().trim());
-                    last.setmStartRide(whereInput.getText().toString().trim());
-                    ridesInstance.addRide(last);
+                    String what = whatInput.getText().toString().trim();
+                    String where = whereInput.getText().toString().trim();
+                    Ride state = ridesInstance.addRide(what, where);
 
-                    Log.d(TAG, "onClick: " + last.toString());
+                    if (state == null) {
+                        Toast.makeText(StartRide.this, "Error: Ride is still in progress", Toast.LENGTH_SHORT).show();
+                    } else {
+                        updateUI(state);
+                    }
 
                     // reset text fields
                     whatInput.setText("");
                     whereInput.setText("");
-                    updateUI();
                 }
             }
         });
     }
 
-    private void updateUI(){ lastAdded.setText(last.toString()); }
+    private void updateUI(Ride newState){
+        lastAdded.setText(newState.toString());
+    }
 
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, StartRide.class);

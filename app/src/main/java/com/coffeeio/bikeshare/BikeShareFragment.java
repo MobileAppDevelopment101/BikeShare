@@ -48,7 +48,6 @@ public class BikeShareFragment extends Fragment {
         ListView listView = v.findViewById(R.id.item_list);
         listView.setAdapter(itemsAdapter);
 
-
         startRide = v.findViewById(R.id.start_ride);
         endRide = v.findViewById(R.id.end_ride);
 
@@ -77,10 +76,6 @@ public class BikeShareFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        Log.d(TAG, "onResume: clearing list");
-        for (Ride ride: ridesInstance.getRidesDB()) {
-            Log.d(TAG, ride.toString());
-        }
         // Empty list and refill.
         itemsAdapter.clear();
         itemsAdapter.addAll(ridesInstance.getRidesDB());
