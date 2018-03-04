@@ -1,7 +1,6 @@
 package com.coffeeio.bikeshare;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,22 +14,29 @@ import java.util.List;
 
 public class RidesDB {
     private static RidesDB sRidesDB;
+    private ArrayList<Ride> ridesFinished;
+    private HashMap<String, Ride> ridesInProgress;
+
+    private RidesDB(Context context) {
+        clearRides();
+    }
+    private RidesDB() {
+        clearRides();
+    }
 
     public static RidesDB get() {
         if (sRidesDB == null) { sRidesDB = new RidesDB(); }
         return sRidesDB;
     }
+
     public static RidesDB get(Context context) {
         if (sRidesDB == null) { sRidesDB = new RidesDB(context); }
         return sRidesDB;
     }
 
-    private ArrayList<Ride> ridesFinished;
-    private HashMap<String, Ride> ridesInProgress;
-
     public List<Ride> getRidesDB() {
         List<Ride> r1 = getFinishedRides();
-        List<Ride> r2 = getUnfinisedRides();
+        List<Ride> r2 = getUnfinishedRides();
         Collections.reverse(r1); // Newly finished rides first
         r2.addAll(r1); // Append finished onto unfinished, so unfinished is displayed first.
         return r2;
@@ -39,7 +45,8 @@ public class RidesDB {
     public List<Ride> getFinishedRides() {
         return ridesFinished;
     }
-    public List<Ride> getUnfinisedRides() {
+
+    public List<Ride> getUnfinishedRides() {
         // Convert map to list. http://javaconceptoftheday.com/how-to-convert-hashmap-to-arraylist-in-java/
         Collection<Ride> values = ridesInProgress.values();
         ArrayList<Ride> listOfValues = new ArrayList<>(values);
@@ -54,6 +61,7 @@ public class RidesDB {
 
         return new Ride(what, where);
     }
+
     public Ride addRide(Ride ride) {
        return addRide(ride.getmBikeName(), ride.getmStartRide());
     }
@@ -68,13 +76,6 @@ public class RidesDB {
         }
 
         return null;
-    }
-
-    private RidesDB(Context context) {
-        clearRides();
-    }
-    private RidesDB() {
-        clearRides();
     }
 
     public void clearRides() {

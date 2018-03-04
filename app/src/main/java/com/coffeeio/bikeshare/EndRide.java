@@ -19,6 +19,11 @@ public class EndRide extends AppCompatActivity {
     private TextView lastAdded, newWhat, newWhere;
     private EditText whereInput, whatInput;
 
+    public static Intent newIntent(Context packageContext) {
+        Intent intent = new Intent(packageContext, EndRide.class);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,6 @@ public class EndRide extends AppCompatActivity {
                         updateUI(state);
                     }
 
-
                     // reset text fields
                     whatInput.setText("");
                     whereInput.setText("");
@@ -59,10 +63,5 @@ public class EndRide extends AppCompatActivity {
 
     private void updateUI(Ride newState){
         lastAdded.setText(newState.toString());
-    }
-
-    public static Intent newIntent(Context packageContext) {
-        Intent intent = new Intent(packageContext, EndRide.class);
-        return intent;
     }
 }

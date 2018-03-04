@@ -5,10 +5,12 @@ package com.coffeeio.bikeshare;
  */
 
 public class Ride {
+    private String mBikeName, mStartRide, mEndRide = null;
     public Ride(String name, String start) {
         mBikeName = name;
         mStartRide = start;
     }
+
     public Ride(String name, String start, String end) {
         mBikeName = name;
         mStartRide = start;
@@ -38,9 +40,6 @@ public class Ride {
     public void setmEndRide(String mEndRide) {
         this.mEndRide = mEndRide;
     }
-
-    private String mBikeName, mStartRide, mEndRide = null;
-
 
     public String toString() {
         if (mEndRide != null) {

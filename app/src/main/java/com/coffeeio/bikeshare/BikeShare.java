@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 public class BikeShare extends  AppCompatActivity {
-    private static final String TAG = "BikeShare";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +20,5 @@ public class BikeShare extends  AppCompatActivity {
                     .add(R.id.fragment_container, fragment)
                     .commit();
         }
-
     }
-
 }

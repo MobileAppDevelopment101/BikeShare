@@ -18,10 +18,10 @@
                 android:text="@string/last_added" />
             <TextView
                 android:id="@+id/last_text"
-                android:lines="2"
-                android:inputType="textMultiLine"
                 style="@style/SimpleInput"
-                android:text="joiajdojasdja sodjasjdoasdoa sjdsoadj asd oasidjoasjoaisdasdasdjoasdj"/>
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:text=""/>
         </LinearLayout>
 
         <LinearLayout

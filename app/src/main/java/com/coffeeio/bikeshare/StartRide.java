@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,14 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class StartRide extends AppCompatActivity {
-    private static final String TAG = "BikeShare";
-
     private RidesDB ridesInstance;
 
     // GUI variables
     private Button addRide;
     private TextView lastAdded, newWhat, newWhere;
     private EditText whereInput, whatInput;
+
+    public static Intent newIntent(Context packageContext) {
+        Intent intent = new Intent(packageContext, StartRide.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class StartRide extends AppCompatActivity {
                         updateUI(state);
                     }
 
-                    // reset text fields
+                    // Reset text fields
                     whatInput.setText("");
                     whereInput.setText("");
                 }
@@ -60,10 +62,5 @@ public class StartRide extends AppCompatActivity {
 
     private void updateUI(Ride newState){
         lastAdded.setText(newState.toString());
-    }
-
-    public static Intent newIntent(Context packageContext) {
-        Intent intent = new Intent(packageContext, StartRide.class);
-        return intent;
     }
 }
